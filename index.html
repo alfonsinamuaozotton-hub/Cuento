@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor Accesible de Cuentos PDF</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Librería PDF.js para leer el PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <!-- Librería PageFlip para el efecto de pasar página -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Lector de Cuentos Accesible</h1>
+        <p>Lectura interactiva con apoyo de voz alta, tipografía adaptable y efectos sonoros de página.</p>
+    </header>
+
+    <!-- Barra de Herramientas y Controles Accesibles -->
+    <nav class="toolbar" aria-label="Controles principales del cuento">
+        <!-- Navegación -->
+        <div class="control-group">
+            <button id="btn-prev" class="btn" aria-label="Página anterior">⬅️ Anterior</button>
+            <span id="page-indicator" aria-live="polite">Página 0 de 0</span>
+            <button id="btn-next" class="btn" aria-label="Página siguiente">Siguiente ➡️</button>
+        </div>
+
+        <!-- Lectura en Voz Alta (Text-to-Speech) -->
+        <div class="control-group">
+            <button id="btn-tts" class="btn btn-accent" aria-label="Leer cuento en voz alta en español">🔊 Leer en voz alta</button>
+            <button id="btn-stop-tts" class="btn btn-danger" aria-label="Detener lectura en voz alta" disabled>⏹️ Detener</button>
+        </div>
+
+        <!-- Ajuste de Tamaño de Letra -->
+        <div class="control-group">
+            <button id="btn-zoom-out" class="btn" aria-label="Achicar tamaño de letra">A- Disminuir letra</button>
+            <button id="btn-zoom-in" class="btn" aria-label="Agrandar tamaño de letra">A+ Agrandar letra</button>
+        </div>
+    </nav>
+
+    <div id="loading" role="status" aria-live="polite">Cargando el cuento desde el repositorio...</div>
+
+    <!-- Zona Principal del Cuento y Panel Adaptado para Baja Visión -->
+    <main class="main-content">
+        <!-- Contenedor del Libro Digital (Flipbook) -->
+        <div class="book-container">
+            <div id="flip-book" class="flip-book"></div>
+        </div>
+
+        <!-- Panel de Texto de Alto Contraste Adaptado para Alumnos con Muy Baja Visión -->
+        <section class="accessible-text-panel" aria-label="Transcripción accesible para baja visión">
+            <h2>Texto Adaptado para Lectura Accesible</h2>
+            <div id="accessible-text" class="accessible-text-content" style="font-size: 22px;">
+                Cargando el texto del cuento...
+            </div>
+        </section>
+    </main>
+
+    <!-- Zona Oculta para Anuncios de Lectores de Pantalla (NVDA, JAWS, VoiceOver) -->
+    <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+
+    <!-- Declaratoria de Uso de Inteligencia Artificial Generativa (IAG) -->
+    <footer class="footer">
+        <div class="iag-declaration">
+            <h3>Declaratoria de Uso de Inteligencia Artificial Generativa (IAG)</h3>
+            <p>
+                Este recurso educativo interactivo y sus archivos de desarrollo (HTML, CSS y JavaScript) han sido adaptados y mejorados con la asistencia de herramientas de Inteligencia Artificial Generativa (IAG).
+                La IAG se empleó para implementar estándares internacionales de accesibilidad web (WCAG), sintetizar sonidos de hojear páginas mediante Web Audio API, integrar lectura en voz alta (Text-To-Speech) en español para estudiantes con baja visión y optimizar la navegación adaptativa.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
